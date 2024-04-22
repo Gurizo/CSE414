@@ -1,0 +1,136 @@
+Part 3: Functional Dependency Theory (35 points)
+Consider the following two relational schemas and sets of functional dependencies:
+a. (10 points) R(A,B,C,D,E) with functional dependencies D → B, CE → A.
+
+Answer: R1(B, D), R3(A, C, E), R4(C, D, E)
+R(A,B,C,D,E)
+D → B, CE → A.
+X = D
+X⁺ = {D, B}, not R nor X⁺ = X
+R1(D, B) AND R2(A, C, D, E)
+
+Normalize(R1)
+R1(D, B)
+X = D
+X⁺ = {D, B}, which is R1
+There is no X that dissatisfies the condition where X⁺ is C or X⁺ is X
+R1 is in BCNF.
+
+Normalize(R2)
+R2(A, C, D, E)
+X = {C, E}
+X⁺ = {C, E, A}, which is not R2 nor X
+R3(A, C, E) AND R4(C, D, E)
+
+Normalize(R3)
+R3(A, C, E)
+X = {C, E}
+X⁺ = {C, E, A}, which is R3
+There is no X that dissatisfies the condition where X⁺ is R3 or X⁺ is X
+R3 is in BCNF.
+
+Normalize(R4)
+R4(C, D, E)
+There is no X that dissatisfies the condition where X⁺ is R4 or X⁺ is X
+R4 is in BCNF.
+
+Therefore,
+R1(B, D), R3(A, C, E), R4(C, D, E) are in BCNF.
+
+b. (10 points) S(A,B,C,D,E) with functional dependencies A → E, BC → A, DE → B.
+For each of the above schemas, decompose it into BCNF. Show all of your work and explain, at each step, 
+which dependency violations you are correcting. Make sure you describe each step in your decomposition steps. (5 points each)
+
+Answer: S1(A, E), S3(A, B, C), S4(B, C, D)
+S(A,B,C,D,E)
+A → E, BC → A, DE → B
+X = A
+X⁺ = {A, E}, which is not X nor S
+S1(A, E) AND S2(A, B, C, D)
+
+Normalize(S1)
+S1(A, E)
+X = A
+X⁺ = {A, E}
+There is no X that dissatisfies the condition where X⁺ is S1 or X⁺ is X
+So S1(A, E) is in BCNF.
+
+Normalize(S2)
+S2(A, B, C, D)
+X = {B, C}
+X⁺ = {A, B, C}, which is not S2 nor X
+S3(A, B, C) AND S4(B, C, D)
+
+Normalize(S3)
+S3(A, B, C)
+X = {B, C}
+X⁺ = {A, B, C}
+There is no X that dissatisfies the condition where X⁺ is S3 or X⁺ is X
+So S3(A, B, C) is in BCNF.
+
+Normalize(S4)
+S4(B, C, D)
+There is no X that dissatisfies the condition where X⁺ is S3 or X⁺ is X
+So S4(B, C, D) is in BCNF.
+
+Therefore,
+S1(A, E), S3(A, B, C), S4(B, C, D) are in BCNF.
+
+For each of the above schemas, decompose it into BCNF. Show all of your work and explain, at each step, 
+which dependency violations you are correcting. Make sure you describe each step in your decomposition steps. (5 points each)
+A set of attributes X is called closed (with respect to a given set of functional dependencies) if 
+X⁺ = X. Consider a relation with schema R(A,B,C,D) and an unknown set of functional dependencies. 
+For each closed attribute set below, give a set of functional dependencies that is consistent with it.
+c. (5 points) All subsets of {A,B,C,D} are closed.
+
+Answer: Satisfies if there is no functional dependency.
+If there is at least one functional dependency like A → B, 
+X = A
+X⁺ = {A, B}, which is not closed. So there cannot be any functional dependency.
+
+d. (5 points) The only closed subsets of {A,B,C,D} are {} and {A,B,C,D}.
+
+Answer: A → B, B → C, C → D, D → A
+A → B, B → C, C → D, D → A
+Then, 
+X = A, X = B, X = C, X = D
+would all result in being not closed as X⁺ would not be X. 
+Therefore, these functional dependencies will satisfy the condition.
+
+e. (5 points) The only closed subsets of {A,B,C,D} are {}, {B,C}, and {A,B,C,D}.
+
+Answer: A → BD, B → C, C → B, D → A
+There are 16 possibilities in total.
+A → BD, B → C, C → B, D → A
+X = A
+X⁺ = {A, B, C, D} not closed
+X = B
+X⁺ = {B, C} not closed
+X = C
+X⁺ = {C, B} not closed
+X = D
+X⁺ = {D, A, B, C} not closed
+X = {A, B, C, D}
+X⁺ = {A, B, C} not closed
+X = {A, C}
+X⁺ = {A, B, C, D} not closed
+X = {B, C}
+X⁺ = {B, C} closed
+X = {B, D}
+X⁺ = {B, C, D, A} not closed
+X = {C, D}
+X⁺ = {A, B, C, D} not closed
+X = {D, A}
+X⁺ = {A, B, C, D} not closed
+X = {A, B, C}
+X⁺ = {A, B, C, D} not closed
+X = {A, B, D}
+X⁺ = {A, B, C, D} not closed
+X = {A, C, D}
+X⁺ = {A, B, C, D} not closed
+X = {B, C, D}
+X = {A, B, C, D} not closed
+X = {A, B, C, D}
+X⁺ = {A, B, C, D} closed
+X = {}
+X⁺ = {} closed

@@ -1,0 +1,33 @@
+Final bcnf q2-2
+Sales( txn_day, txn_id, rep_id, quantity, item_no, item_name, price, rating, category )
+txn_id -> txn_day, rep_id
+item_no -> item_name, price, rating, category
+item_no, txn_id -> quantity
+
+X = txn_id
+X⁺ = {txn_id, txn_day, rep_id), which is not X nor Sales
+
+Sales1 = (txn_id, txn_day, rep_id)
+Sales2 = {txn_id, quantity, item_no, item_name, price, rating, category}
+
+N(Sales1)
+X = txn_id
+X⁺ = {txn_id, txn_day, rep_id}, which is Sales1
+There is no X that dissatisfies the condition where X⁺ is C or X⁺ is X, so BCNF
+
+N(Sales2)
+X = item_no
+X⁺ = {item_no, item_name, price, rating, category}, which is not X nor Sales2
+
+Sales3 = {item_no, item_name, price, rating, category}
+Sales4 = {item_no, txn_id, quantity}
+
+N(Sales3)
+X = item_no
+X⁺ = {item_no, item_name, price, rating, category}, which is Sales3
+There is no X that dissatisfies the condition where X⁺ is C or X⁺ is X, so BCNF
+
+N(Sales4)
+X = {item_no, txn_id}
+X⁺ = {item_no, txn_id, quantity}
+There is no X that dissatisfies the condition where X⁺ is C or X⁺ is X, so BCNF

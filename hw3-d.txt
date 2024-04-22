@@ -1,0 +1,7 @@
+--#8
+I would definitely recommend using it to fellow students. At first, I thought it would be awkward to program in a new work environment, Azure, but after connecting it to the Visual Studio Code, it is very familiar while utilizing all of the things that the cloud-hosted DBMS provides. 
+Additionally, if I want to work on the dataset with different computer, I can just simply login to the cloud and easily access the cloud workspace. Therefore, I think it would be a great practice for others to develop new skills using other workspace while learning to use them in a pretty much same environment like Visual Studio Code.
+
+
+
+
